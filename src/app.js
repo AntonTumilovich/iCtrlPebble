@@ -14,6 +14,7 @@ var main = new UI.Menu({
       {title: 'Bath Fan', icon: 'images/fan.png'},
       {title: 'Kitch Fan', icon: 'images/fan.png'},
       {title: 'Refresh iCtrl', icon: 'images/home.png'}
+
     ]
     }]
 });
@@ -26,8 +27,8 @@ var data_menu = new UI.Menu({
       {title: 'Out', icon: 'images/temp.png'},
       {title: 'Bath', icon: 'images/temp.png'},
       {title: 'Kitchen', icon: 'images/temp.png'},
-      {title: 'Door In', icon: 'images/fan.png'},
-      {title: 'Door Out', icon: 'images/fan.png'},
+      {title: 'Door In', icon: 'images/door.png'},
+      {title: 'Door Out', icon: 'images/door.png'},
     ]
     }]
 });
@@ -80,45 +81,14 @@ main.on('select', function(e) {
       data_menu.show();
     }
 
-    if (e.itemIndex === 1 )
-    {
-      ajax({ url: 'http://ictrl.home:1110/ts00', type: 'json' }, function(data) {main.item(0, 1, {subtitle: data.room_l });});
-    }
-
-    if (e.itemIndex === 2 )
-    {
-      ajax({ url: 'http://ictrl.home:1110/ts01', type: 'json' }, function(data) {main.item(0, 2, {subtitle: data.hall_l });});
-    }
-
-    if (e.itemIndex === 3 )
-    {
-      ajax({ url: 'http://ictrl.home:1110/ts02', type: 'json' }, function(data) {main.item(0, 3, {subtitle: data.toal_l });});
-    }
-
-    if (e.itemIndex === 4 )
-    {
-      ajax({ url: 'http://ictrl.home:1110/ts03', type: 'json' }, function(data) {main.item(0, 4, {subtitle: data.bath_l });});
-    }
-
-    if (e.itemIndex === 5 )
-    {
-      ajax({ url: 'http://ictrl.home:1110/ts04', type: 'json' }, function(data) {main.item(0, 5, {subtitle: data.kitch_l });});
-    }
-
-    if (e.itemIndex === 6 )
-    {
-      ajax({ url: 'http://ictrl.home:1110/ts05', type: 'json' }, function(data) {main.item(0, 6, {subtitle: data.bath_f });});
-    }
-
-    if (e.itemIndex === 7 )
-    {
-      ajax({ url: 'http://ictrl.home:1110/ts06', type: 'json' }, function(data) {main.item(0, 7, {subtitle: data.kitch_f });});
-    }
-
-    if (e.itemIndex === 8 )
-    {
-      refresh_switchs();
-    }
+    if (e.itemIndex === 1 ) {ajax({ url: 'http://ictrl.home:1110/ts00', type: 'json' }, function(data) {main.item(0, 1, {subtitle: data.room_l });});}
+    if (e.itemIndex === 2 ) {ajax({ url: 'http://ictrl.home:1110/ts01', type: 'json' }, function(data) {main.item(0, 2, {subtitle: data.hall_l });});}
+    if (e.itemIndex === 3 ) {ajax({ url: 'http://ictrl.home:1110/ts02', type: 'json' }, function(data) {main.item(0, 3, {subtitle: data.toal_l });});}
+    if (e.itemIndex === 4 ) {ajax({ url: 'http://ictrl.home:1110/ts03', type: 'json' }, function(data) {main.item(0, 4, {subtitle: data.bath_l });});}
+    if (e.itemIndex === 5 ) {ajax({ url: 'http://ictrl.home:1110/ts04', type: 'json' }, function(data) {main.item(0, 5, {subtitle: data.kitch_l });});}
+    if (e.itemIndex === 6 ) {ajax({ url: 'http://ictrl.home:1110/ts05', type: 'json' }, function(data) {main.item(0, 6, {subtitle: data.bath_f });});}
+    if (e.itemIndex === 7 ) {ajax({ url: 'http://ictrl.home:1110/ts06', type: 'json' }, function(data) {main.item(0, 7, {subtitle: data.kitch_f });});}
+    if (e.itemIndex === 8 ) {refresh_switchs();}
 
 
     console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);

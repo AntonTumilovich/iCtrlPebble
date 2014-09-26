@@ -29,8 +29,8 @@
                 "type": "font"
             },
             {
-                "file": "images/temp.png",
-                "name": "IMAGES_TEMP_PNG",
+                "file": "images/door.png",
+                "name": "IMAGES_DOOR_PNG",
                 "type": "png"
             },
             {
@@ -41,6 +41,11 @@
             {
                 "file": "images/fan.png",
                 "name": "IMAGES_FAN_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/temp.png",
+                "name": "IMAGES_TEMP_PNG",
                 "type": "png"
             },
             {
