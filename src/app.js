@@ -36,7 +36,7 @@ var data_menu = new UI.Menu({
 
 function refresh_switchs(e){
   var ajax = require('ajax');
-      ajax({ url: 'http://ictrl.home:1110/jva6', type: 'json'},
+      ajax({ url: 'http://www.nevicom.ru/cgi-bin/jva6', type: 'json'},
         function(data) {
           main.item(0, 1, {subtitle: data.room_l });
           main.item(0, 2, {subtitle: data.hall_l });
@@ -52,7 +52,7 @@ function refresh_switchs(e){
 
 function refresh_sensors(e){
   var ajax = require('ajax');
-      ajax({ url: 'http://ictrl.home:1110/jva6', type: 'json'},
+      ajax({ url: 'http://www.nevicom.ru/cgi-bin/jva6', type: 'json'},
         function(data) {
           data_menu.item(0, 0, {subtitle: data.room_th });
           data_menu.item(0, 1, {subtitle: data.out_th });
