@@ -29,14 +29,24 @@
                 "type": "font"
             },
             {
+                "file": "images/temp.png",
+                "name": "IMAGES_TEMP_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/bulb.png",
+                "name": "IMAGES_BULB_PNG",
+                "type": "png"
+            },
+            {
                 "file": "images/fan.png",
                 "name": "IMAGES_FAN_PNG",
                 "type": "png"
             },
             {
-                "file": "images/bulb.png",
+                "file": "images/home.png",
                 "menuIcon": true,
-                "name": "IMAGES_BULB_PNG",
+                "name": "IMAGES_HOME_PNG",
                 "type": "png"
             }
         ]
