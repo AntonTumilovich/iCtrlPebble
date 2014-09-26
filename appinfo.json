@@ -1,0 +1,51 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        "location"
+    ],
+    "companyName": "anton_tumilovich@nevicom.ru",
+    "longName": "iCtrl",
+    "projectType": "pebblejs",
+    "resources": {
+        "media": [
+            {
+                "file": "images/menu_icon.png",
+                "name": "IMAGE_MENU_ICON",
+                "type": "png"
+            },
+            {
+                "file": "images/logo_splash.png",
+                "name": "IMAGE_LOGO_SPLASH",
+                "type": "png"
+            },
+            {
+                "file": "images/tile_splash.png",
+                "name": "IMAGE_TILE_SPLASH",
+                "type": "png"
+            },
+            {
+                "file": "fonts/UbuntuMono-Regular.ttf",
+                "name": "MONO_FONT_14",
+                "type": "font"
+            },
+            {
+                "file": "images/fan.png",
+                "name": "IMAGES_FAN_PNG",
+                "type": "png"
+            },
+            {
+                "file": "images/bulb.png",
+                "menuIcon": true,
+                "name": "IMAGES_BULB_PNG",
+                "type": "png"
+            }
+        ]
+    },
+    "shortName": "iCtrl",
+    "uuid": "2a62ad57-8bdd-4b28-b150-966c418bf561",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
