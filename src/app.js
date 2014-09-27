@@ -1,5 +1,15 @@
 var UI = require('ui');
-//var sens_card = new UI.Card({title: 'Sensors :', icon: 'images/temp.png', body: ''});
+var Accel = require('ui/accel');
+var ajax = require('ajax');
+Accel.init();
+
+
+Accel.on('tap', function(e) {
+  refresh_switchs();
+  refresh_sensors();
+  console.log('Tap event on axis: ' + e.axis + ' and direction: ' + e.direction);
+});
+
 
 var main = new UI.Menu({
   sections: [{
@@ -35,7 +45,6 @@ var data_menu = new UI.Menu({
 
 
 function refresh_switchs(e){
-  var ajax = require('ajax');
       ajax({ url: 'http://www.nevicom.ru/cgi-bin/jva6', type: 'json'},
         function(data) {
           main.item(0, 1, {subtitle: data.room_l });
@@ -51,18 +60,16 @@ function refresh_switchs(e){
 }
 
 function refresh_sensors(e){
-  var ajax = require('ajax');
-      ajax({ url: 'http://www.nevicom.ru/cgi-bin/jva6', type: 'json'},
-        function(data) {
-          data_menu.item(0, 0, {subtitle: data.room_th });
-          data_menu.item(0, 1, {subtitle: data.out_th });
-          data_menu.item(0, 2, {subtitle: data.bath_th });
-          data_menu.item(0, 3, {subtitle: data.kitch_th });
-          data_menu.item(0, 4, {subtitle: data.door_in });
-          data_menu.item(0, 5, {subtitle: data.door_out });
-
+  ajax({ url: 'http://www.nevicom.ru/cgi-bin/jva6', type: 'json'},
+      function(data) {
+        data_menu.item(0, 0, {subtitle: data.room_th });
+        data_menu.item(0, 1, {subtitle: data.out_th });
+        data_menu.item(0, 2, {subtitle: data.bath_th });
+        data_menu.item(0, 3, {subtitle: data.kitch_th });
+        data_menu.item(0, 4, {subtitle: data.door_in });
+        data_menu.item(0, 5, {subtitle: data.door_out });
       }
-      );
+  );
   console.log('Refresh sensors : "');
 }
 
@@ -73,27 +80,25 @@ data_menu.on('select', function(e) {
 
 
 main.on('select', function(e) {
-  var ajax = require('ajax');
-  
-      if (e.itemIndex === 0 )
-    {
-      refresh_sensors();
-      data_menu.show();
-    }
+  if (e.itemIndex === 0 )
+  {
+    refresh_sensors();
+    data_menu.show();
+  }
 
-    if (e.itemIndex === 1 ) {ajax({ url: 'http://ictrl.home:1110/ts00', type: 'json' }, function(data) {main.item(0, 1, {subtitle: data.room_l });});}
-    if (e.itemIndex === 2 ) {ajax({ url: 'http://ictrl.home:1110/ts01', type: 'json' }, function(data) {main.item(0, 2, {subtitle: data.hall_l });});}
-    if (e.itemIndex === 3 ) {ajax({ url: 'http://ictrl.home:1110/ts02', type: 'json' }, function(data) {main.item(0, 3, {subtitle: data.toal_l });});}
-    if (e.itemIndex === 4 ) {ajax({ url: 'http://ictrl.home:1110/ts03', type: 'json' }, function(data) {main.item(0, 4, {subtitle: data.bath_l });});}
-    if (e.itemIndex === 5 ) {ajax({ url: 'http://ictrl.home:1110/ts04', type: 'json' }, function(data) {main.item(0, 5, {subtitle: data.kitch_l });});}
-    if (e.itemIndex === 6 ) {ajax({ url: 'http://ictrl.home:1110/ts05', type: 'json' }, function(data) {main.item(0, 6, {subtitle: data.bath_f });});}
-    if (e.itemIndex === 7 ) {ajax({ url: 'http://ictrl.home:1110/ts06', type: 'json' }, function(data) {main.item(0, 7, {subtitle: data.kitch_f });});}
-    if (e.itemIndex === 8 ) {refresh_switchs();}
+  if (e.itemIndex === 1 ) {ajax({ url: 'http://ictrl.home:1110/ts00', type: 'json' }, function(data) {main.item(0, 1, {subtitle: data.room_l });});}
+  if (e.itemIndex === 2 ) {ajax({ url: 'http://ictrl.home:1110/ts01', type: 'json' }, function(data) {main.item(0, 2, {subtitle: data.hall_l });});}
+  if (e.itemIndex === 3 ) {ajax({ url: 'http://ictrl.home:1110/ts02', type: 'json' }, function(data) {main.item(0, 3, {subtitle: data.toal_l });});}
+  if (e.itemIndex === 4 ) {ajax({ url: 'http://ictrl.home:1110/ts03', type: 'json' }, function(data) {main.item(0, 4, {subtitle: data.bath_l });});}
+  if (e.itemIndex === 5 ) {ajax({ url: 'http://ictrl.home:1110/ts04', type: 'json' }, function(data) {main.item(0, 5, {subtitle: data.kitch_l });});}
+  if (e.itemIndex === 6 ) {ajax({ url: 'http://ictrl.home:1110/ts05', type: 'json' }, function(data) {main.item(0, 6, {subtitle: data.bath_f });});}
+  if (e.itemIndex === 7 ) {ajax({ url: 'http://ictrl.home:1110/ts06', type: 'json' }, function(data) {main.item(0, 7, {subtitle: data.kitch_f });});}
+  if (e.itemIndex === 8 ) {refresh_switchs();}
 
 
-    console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
-    console.log('The item is titled "' + e.item.title + '"');
-  });
+  console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
+  console.log('The item is titled "' + e.item.title + '"');
+});
 
 refresh_switchs();
 main.show();
