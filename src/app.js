@@ -26,8 +26,7 @@ var data_menu = new UI.Menu({
       {title: 'Out', icon: 'images/temp.png'},
       {title: 'Bath', icon: 'images/temp.png'},
       {title: 'Kitchen', icon: 'images/temp.png'},
-      {title: 'Door In', icon: 'images/door.png'},
-      {title: 'Door Out', icon: 'images/door.png'},
+      {title: 'Door In/Out', icon: 'images/door.png'},
     ]
     }]
 });
@@ -78,8 +77,7 @@ function refresh_sensors(e)
       data_menu.item(0, 1, {subtitle: data.out_th });
       data_menu.item(0, 2, {subtitle: data.bath_th });
       data_menu.item(0, 3, {subtitle: data.kitch_th });
-      data_menu.item(0, 4, {subtitle: data.door_in });
-      data_menu.item(0, 5, {subtitle: data.door_out });
+      data_menu.item(0, 4, {subtitle: data.door_in + "/" + data.door_out });
     },
     function()
     {         
